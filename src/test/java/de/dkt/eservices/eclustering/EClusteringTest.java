@@ -1,8 +1,7 @@
-package de.dkt.eservices.emallet;
+package de.dkt.eservices.eclustering;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.junit.Assert;
@@ -17,13 +16,13 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequestWithBody;
 
-import de.dkt.common.filemanagement.FileFactory;
+import de.dkt.eservices.TestConstants;
 import eu.freme.bservices.testhelper.TestHelper;
 import eu.freme.bservices.testhelper.ValidationHelper;
 import eu.freme.bservices.testhelper.api.IntegrationTestSetup;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EMalletTest {
+public class EClusteringTest {
 
 	TestHelper testHelper;
 	ValidationHelper validationHelper;
@@ -36,7 +35,7 @@ public class EMalletTest {
 		validationHelper = context.getBean(ValidationHelper.class);
 	}
 
-	private HttpRequestWithBody baseRequest() {
+	private HttpRequestWithBody baseMALLETRequest() {
 		String url = testHelper.getAPIBaseUrl() + "/e-mallet/testURL";
 		return Unirest.post(url);
 	}
@@ -46,20 +45,31 @@ public class EMalletTest {
 		return Unirest.post(url);
 	}
 	
-	private HttpRequestWithBody topicModellingRequest() {
-		String url = testHelper.getAPIBaseUrl() + "/e-topicmodelling";
+//	private HttpRequestWithBody topicModellingRequest() {
+//		String url = testHelper.getAPIBaseUrl() + "/e-topicmodelling";
+//		return Unirest.post(url);
+//	}
+	
+	private HttpRequestWithBody baseWEKARequest() {
+		String url = testHelper.getAPIBaseUrl() + "/e-weka/testURL";
 		return Unirest.post(url);
 	}
+	
+	private HttpRequestWithBody clusteringRequest() {
+		String url = testHelper.getAPIBaseUrl() + "/e-clustering/generateClusters";
+		return Unirest.post(url);
+	}
+	
 
-	private HttpRequestWithBody trainModelRequest() {
-		String url = testHelper.getAPIBaseUrl() + "/e-mallet/trainModel";
-		return Unirest.post(url);
-	}
+//	private HttpRequestWithBody trainModelRequest() {
+//		String url = testHelper.getAPIBaseUrl() + "/e-mallet/trainModel";
+//		return Unirest.post(url);
+//	}
 
 	@Test
 	public void test0_EMalletBasic() throws UnirestException, IOException,
 	Exception {
-		HttpResponse<String> response = baseRequest()
+		HttpResponse<String> response = baseMALLETRequest()
 				.queryString("informat", "text")
 				.queryString("input", "hello world")
 				.queryString("outformat", "turtle").asString();
@@ -164,4 +174,41 @@ public class EMalletTest {
 //		assertTrue(response.getBody().length() > 0);
 //		Assert.assertEquals("Topic modelling Model [de-testModelTOPIC.EXT] successfully trained!!!", response.getBody());
 //	}
+	
+	@Test
+	public void testEWekaBasic() throws UnirestException, IOException,
+			Exception {
+
+		HttpResponse<String> response = baseWEKARequest()
+				.queryString("informat", "text")
+				.queryString("input", "hello world")
+				.queryString("outformat", "turtle").asString();
+
+		System.out.println("BODY: "+response.getBody());
+		System.out.println("STATUS:" + response.getStatus());
+
+		assertTrue(response.getStatus() == 200);
+		assertTrue(response.getBody().length() > 0);
+		
+	}
+	
+	@Test
+	public void simpleEMTest() throws UnirestException, IOException,
+			Exception {
+
+		HttpResponse<String> response2 = clusteringRequest()
+				.queryString("language", "en")
+				.queryString("algorithm", "EM")
+				.body(TestConstants.sampleARFF)
+				.asString();
+				
+		System.out.println("DEBUGGING output here:" + response2.getBody());
+		//System.out.println("BODY: "+response.getBody());
+		//System.out.println("STATUS:" + response.getStatus());
+
+		//assertTrue(response.getStatus() == 200);
+		//assertTrue(response.getBody().length() > 0);
+		
+	}	
+
 }
