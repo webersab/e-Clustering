@@ -92,7 +92,7 @@ public class EMalletTest {
 //				.queryString("modelPath", "recursos/")
 				.queryString("language", "de")
 				.asString();
-		Assert.assertEquals(response.getStatus(), 200);
+		Assert.assertEquals(200,response.getStatus());
 		assertTrue(response.getBody().length() > 0);
 		Assert.assertEquals(TestConstants.expectedResponseClassification2, response.getBody());
 	}
