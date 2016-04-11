@@ -44,6 +44,10 @@ public class EMalletServiceStandAlone extends BaseRestController{
 	@Autowired
 	EMalletService service;
 	
+	public EMalletServiceStandAlone() {
+		System.err.println("xxx");
+	}
+	
 	@RequestMapping(value = "/e-mallet/testURL", method = { RequestMethod.POST, RequestMethod.GET })
 	public ResponseEntity<String> testURL(
 			@RequestParam(value = "preffix", required = false) String preffix,

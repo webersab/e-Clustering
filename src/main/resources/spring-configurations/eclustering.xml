@@ -7,6 +7,5 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="de.dkt.eservices.emallet" />
-	<context:component-scan base-package="de.dkt.eservices.eweka" />
+	<context:component-scan base-package="de.dkt.eservices" />
 </beans>

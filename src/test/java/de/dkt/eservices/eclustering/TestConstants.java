@@ -1,4 +1,4 @@
-package de.dkt.eservices;
+package de.dkt.eservices.eclustering;
 
 
 public class TestConstants {
