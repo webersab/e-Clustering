@@ -103,7 +103,7 @@ public class EClusteringTest {
 				.queryString("input", "Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin")
 				.queryString("outformat", "turtle")
 				.queryString("modelName", "testModel")
-				.queryString("modelPath", "/Users/jumo04/Documents/DFKI/DKT/dkt-test/malletTest/trainedModels/documentClassification/")
+//				.queryString("modelPath", "/Users/jumo04/Documents/DFKI/DKT/dkt-test/malletTest/trainedModels/documentClassification/")
 				.queryString("language", "de")
 				.asString();
 		Assert.assertEquals(response.getStatus(), 200);
@@ -121,7 +121,7 @@ public class EClusteringTest {
 //				.queryString("modelPath", "recursos/")
 				.queryString("language", "de")
 				.asString();
-		Assert.assertEquals(200,response.getStatus());
+		Assert.assertEquals(response.getStatus(),200);
 		assertTrue(response.getBody().length() > 0);
 		Assert.assertEquals(TestConstants.expectedResponseClassification2, response.getBody());
 	}
