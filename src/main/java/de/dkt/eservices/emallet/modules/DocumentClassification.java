@@ -52,10 +52,10 @@ public class DocumentClassification {
 
 	        System.out.println(classifier.getInstancePipe());
 	        ImportData importData = new ImportData("vector",language);
-	        InstanceList testing = new InstanceList(importData.getPipe());
+	        InstanceList testing = new InstanceList(classifier.getInstancePipe());
 //	        InstanceList testing = new InstanceList(classifier.getInstancePipe());
 	        System.out.println("DEBUG: " + inputText);
-	        testing.addThruPipe(new Instance(inputText, "", "test instance", ""));
+	        testing.addThruPipe(new Instance(inputText, classifier.getLabelAlphabet().iterator().next(), "test instance", null));
 	        
 	        String output="";
 	        
