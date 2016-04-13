@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>de.dkt</groupId>
-			<artifactId>DKTCommonUpdate</artifactId>
+			<artifactId>DKTCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
