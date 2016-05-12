@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
-import de.dkt.common.niftools.DFKINIF;
+import de.dkt.common.niftools.DKTNIF;
 import de.dkt.common.niftools.NIFReader;
 import de.dkt.common.niftools.NIFWriter;
 import de.dkt.eservices.emallet.modules.DocumentClassification;
@@ -40,7 +40,7 @@ public class EMalletService {
         	RDFSerialization format = (new RDFSerializationFormats()).get(informat);
         	if(format.equals(RDFConstants.RDFSerialization.PLAINTEXT)){
         		inModel = NIFWriter.initializeOutputModel();
-        		NIFWriter.addInitialString(inModel, inputText, DFKINIF.getDefaultPrefix());
+        		NIFWriter.addInitialString(inModel, inputText, DKTNIF.getDefaultPrefix());
         	}
         	else{
             	inModel = rdfConversionService.unserializeRDF(inputText, format);
