@@ -42,7 +42,8 @@ public class TestConstants {
 			"\n" +
 			"";
 	public static String expectedResponseClassification = 
-			"@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n" +
+			"@prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> .\n" +
+					"@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n" +
 					"@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n" +
 					"@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .\n" +
 					"@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .\n" +
@@ -51,8 +52,8 @@ public class TestConstants {
 					"<http://dkt.dfki.de/documents/#char=0,74>\n" +
 					"        a               nif:RFC5147String , nif:String , nif:Context ;\n" +
 					"        nif:beginIndex  \"0\"^^xsd:nonNegativeInteger ;\n" +
-			        "        nif:documentClassificationLabel\n" +
-	                "                \"Politik\"^^xsd:string ;\n" +
+					"        nif:documentClassificationLabel\n" +
+					"                \"Politik\"^^xsd:string ;\n" +
 					"        nif:endIndex    \"74\"^^xsd:nonNegativeInteger ;\n" +
 					"        nif:isString    \"Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin\"^^xsd:string .\n" +
 					"";
