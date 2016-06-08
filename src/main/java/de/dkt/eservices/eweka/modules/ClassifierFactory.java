@@ -13,14 +13,14 @@ import weka.classifiers.trees.RandomTree;
 
 public class ClassifierFactory {
 
-	/**
+	/*
 	 * Implemented Algorithms
 	 * 
 	 * BayesianLogisticRegression, J48, LinearRegression, MultilayerPerceptron, NaiveBayes, 
 	 * RandomForest, RandomTree, SMO, 
 	 */
 
-	/**
+	/*
 	 * NOT Implemented Algorithms
 	 * 
 	 * ADTree, AODE, AODEsr, BayesNet, CitationKNN, ClassificationViaClustering, 

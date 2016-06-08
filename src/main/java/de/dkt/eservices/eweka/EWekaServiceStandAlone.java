@@ -70,7 +70,7 @@ public class EWekaServiceStandAlone extends BaseRestController{
 			@RequestParam(value = "algorithm", required = false) String algorithm,
 			@RequestBody(required = false) String postBody) throws Exception {
 		
-		System.err.println(postBody);
+//		System.err.println(postBody);
 		try {
 	        MultipartFile file1 = null;
     		byte[] bytes;
