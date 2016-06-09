@@ -65,10 +65,10 @@ public class EClusteringTest {
 		return Unirest.post(url);
 	}
 	
-//	private HttpRequestWithBody topicModellingRequest() {
-//		String url = testHelper.getAPIBaseUrl() + "/e-topicmodelling";
-//		return Unirest.post(url);
-//	}
+	private HttpRequestWithBody topicModellingRequest() {
+		String url = testHelper.getAPIBaseUrl() + "/e-topicmodelling";
+		return Unirest.post(url);
+	}
 	
 	private HttpRequestWithBody baseWEKARequest() {
 		String url = testHelper.getAPIBaseUrl() + "/e-weka/testURL";
@@ -86,7 +86,7 @@ public class EClusteringTest {
 	}
 
 	@Test
-	public void test0_EMalletBasic() throws UnirestException, IOException,
+	public void testM_0_EMalletBasic() throws UnirestException, IOException,
 	Exception {
 		HttpResponse<String> response = baseMALLETRequest()
 				.queryString("informat", "text")
@@ -97,7 +97,7 @@ public class EClusteringTest {
 	}
 
 	@Test
-	public void test6_EMalletAnalyzeTextDocumentClassification() throws UnirestException, IOException,Exception {
+	public void testM_2_AnalyzeTextDocumentClassification() throws UnirestException, IOException,Exception {
 		HttpResponse<String> response = documentClassificationRequest()
 				.queryString("informat", "text")
 				.queryString("input", "Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin")
@@ -112,50 +112,50 @@ public class EClusteringTest {
 		Assert.assertEquals(TestConstants.expectedResponseClassification, response.getBody());
 	}
 
-//	@Test
-//	public void test5_EMalletAnalyzeNIFTextDocumentClassification() throws UnirestException, IOException,Exception {
-//		HttpResponse<String> response = documentClassificationRequest()
-//				.queryString("informat", "turtle")
-//				.queryString("input", TestConstants.inputText)
-//				.queryString("outformat", "turtle")
-//				.queryString("modelName", "testModelCLASSIFICATION")
-////				.queryString("modelPath", "recursos/")
-//				.queryString("language", "de")
-//				.asString();
-//		Assert.assertEquals(response.getStatus(),200);
-//		assertTrue(response.getBody().length() > 0);
-//		Assert.assertEquals(TestConstants.expectedResponseClassification2, response.getBody());
-//	}
-//
-//////	@Test
-//////	public void test4_EMalletAnalyzeTextTopicModelling() throws UnirestException, IOException,Exception {
-//////		HttpResponse<String> response = topicModellingRequest()
-//////				.queryString("informat", "text")
-//////				.queryString("input", "Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin")
-//////				.queryString("outformat", "turtle")
-//////				.queryString("modelName", "testModel")
-////////				.queryString("modelPath", "recursos/")
-//////				.queryString("language", "de")
-//////				.asString();
-//////		Assert.assertEquals(response.getStatus(), 200);
-//////		assertTrue(response.getBody().length() > 0);
-//////		Assert.assertEquals(TestConstants.expectedResponseTopic, response.getBody());
-//////	}
-//////
-//////	@Test
-//////	public void test3_EMalletAnalyzeNIFTextTopicModelling() throws UnirestException, IOException,Exception {
-//////		HttpResponse<String> response = topicModellingRequest()
-//////				.queryString("informat", "turtle")
-//////				.queryString("input", TestConstants.inputText)
-//////				.queryString("outformat", "turtle")
-//////				.queryString("modelName", "testModel")
-////////				.queryString("modelPath", "recursos/")
-//////				.queryString("language", "de")
-//////				.asString();
-//////		Assert.assertEquals(response.getStatus(), 200);
-//////		assertTrue(response.getBody().length() > 0);
-//////		Assert.assertEquals(TestConstants.expectedResponseTopic2, response.getBody());
-//////	}
+	@Test
+	public void testM_3_AnalyzeNIFTextDocumentClassification() throws UnirestException, IOException,Exception {
+		HttpResponse<String> response = documentClassificationRequest()
+				.queryString("informat", "turtle")
+				.queryString("input", TestConstants.inputText)
+				.queryString("outformat", "turtle")
+				.queryString("modelName", "condat_types")
+//				.queryString("modelPath", "recursos/")
+				.queryString("language", "de")
+				.asString();
+		Assert.assertEquals(response.getStatus(),200);
+		assertTrue(response.getBody().length() > 0);
+		Assert.assertEquals(TestConstants.expectedResponseClassification2, response.getBody());
+	}
+
+	@Test
+	public void testM_4_AnalyzeTextTopicModelling() throws UnirestException, IOException,Exception {
+		HttpResponse<String> response = topicModellingRequest()
+				.queryString("informat", "text")
+				.queryString("input", "Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin")
+				.queryString("outformat", "turtle")
+				.queryString("modelName", "condat")
+//				.queryString("modelPath", "recursos/")
+				.queryString("language", "de")
+				.asString();
+		Assert.assertEquals(response.getStatus(), 200);
+		assertTrue(response.getBody().length() > 0);
+		Assert.assertTrue(response.getBody().startsWith(TestConstants.expectedResponseTopic));
+	}
+
+	@Test
+	public void testM_5_AnalyzeNIFTextTopicModelling() throws UnirestException, IOException,Exception {
+		HttpResponse<String> response = topicModellingRequest()
+				.queryString("informat", "turtle")
+				.queryString("input", TestConstants.inputText)
+				.queryString("outformat", "turtle")
+				.queryString("modelName", "3pc")
+//				.queryString("modelPath", "recursos/")
+				.queryString("language", "de")
+				.asString();
+		Assert.assertEquals(response.getStatus(), 200);
+		assertTrue(response.getBody().length() > 0);
+		Assert.assertEquals(TestConstants.expectedResponseTopic2, response.getBody());
+	}
 //////
 //	@Test
 //	public void test2_EMalletTrainClassificationModel() throws UnirestException, IOException,Exception {
@@ -192,43 +192,43 @@ public class EClusteringTest {
 //////		assertTrue(response.getBody().length() > 0);
 //////		Assert.assertEquals("Topic modelling Model [de-testModelTOPIC.EXT] successfully trained!!!", response.getBody());
 //////	}
-//	
-//	@Test
-//	public void testEWekaBasic() throws UnirestException, IOException,
-//			Exception {
-//
-//		HttpResponse<String> response = baseWEKARequest()
-//				.queryString("informat", "text")
-//				.queryString("input", "hello world")
-//				.queryString("outformat", "turtle").asString();
-//
-//		System.out.println("BODY: "+response.getBody());
-//		System.out.println("STATUS:" + response.getStatus());
-//
-//		assertTrue(response.getStatus() == 200);
-//		assertTrue(response.getBody().length() > 0);
-//		
-//	}
-//	
-//	@Test
-//	public void simpleEMTest() throws UnirestException, IOException,
-//			Exception {
-//
-//		HttpResponse<String> response2 = clusteringRequest()
-//				.queryString("language", "en")
-//				.queryString("algorithm", "EM")
-//				.body(TestConstants.sampleARFF)
-//				.asString();
-//				
-//		System.out.println("DEBUGGING output here:" + response2.getBody());
-//		//System.out.println("BODY: "+response.getBody());
-//		//System.out.println("STATUS:" + response.getStatus());
-//
-//		//assertTrue(response.getStatus() == 200);
-//		//assertTrue(response.getBody().length() > 0);
-//		
-//	}	
-//
+	
+	@Test
+	public void testW_0_EWekaBasic() throws UnirestException, IOException,
+			Exception {
+
+		HttpResponse<String> response = baseWEKARequest()
+				.queryString("informat", "text")
+				.queryString("input", "hello world")
+				.queryString("outformat", "turtle").asString();
+
+		System.out.println("BODY: "+response.getBody());
+		System.out.println("STATUS:" + response.getStatus());
+
+		assertTrue(response.getStatus() == 200);
+		assertTrue(response.getBody().length() > 0);
+		
+	}
+	
+	@Test
+	public void testW_1_simpleEMTest() throws UnirestException, IOException,
+			Exception {
+
+		HttpResponse<String> response2 = clusteringRequest()
+				.queryString("language", "en")
+				.queryString("algorithm", "EM")
+				.body(TestConstants.sampleARFF)
+				.asString();
+				
+		System.out.println("DEBUGGING output here:" + response2.getBody());
+		//System.out.println("BODY: "+response.getBody());
+		//System.out.println("STATUS:" + response.getStatus());
+
+		//assertTrue(response.getStatus() == 200);
+		//assertTrue(response.getBody().length() > 0);
+		
+	}	
+
 ////	@Test
 ////	public void simpleEMTest() throws UnirestException, IOException,
 ////			Exception {

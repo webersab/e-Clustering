@@ -53,7 +53,7 @@ public class TestConstants {
 					"        a               nif:RFC5147String , nif:String , nif:Context ;\n" +
 					"        nif:beginIndex  \"0\"^^xsd:nonNegativeInteger ;\n" +
 					"        nif:documentClassificationLabel\n" +
-					"                \"Politik\"^^xsd:string ;\n" +
+					"                \"Agenturmeldung\"^^xsd:string ;\n" +
 					"        nif:endIndex    \"74\"^^xsd:nonNegativeInteger ;\n" +
 					"        nif:isString    \"Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin\"^^xsd:string .\n" +
 					"";
@@ -70,7 +70,7 @@ public class TestConstants {
 					"        nif:beginIndex       \"0\"^^xsd:nonNegativeInteger ;\n" +
 					"        nif:centralGeoPoint  \"42.17561833333333_-4.075817777777777\"^^xsd:string ;\n" +
 			        "        nif:documentClassificationLabel\n" +
-	                "                \"Kultur\"^^xsd:string ;\n" +
+	                "                \"Agenturmeldung\"^^xsd:string ;\n" +
 					"        nif:endIndex         \"806\"^^xsd:nonNegativeInteger ;\n" +
 					"        nif:geoStandardDevs  \"1.4446184970002673_2.202362615152696\"^^xsd:string ;\n" +
 					"        nif:isString         \"1936\\n\\nCoup leader Sanjurjo was killed in a plane crash on 20 July, leaving an effective command split between Mola in the North and Franco in the South. On 21 July, the fifth day of the rebellion, the Nationalists captured the main Spanish naval base at Ferrol in northwestern Spain. A rebel force under Colonel Beorlegui Canet, sent by General Emilio Mola, undertook the Campaign of Guipuzcoa from July to September. The capture of Guipuzcoa isolated the Republican provinces in the north. On 5 September, after heavy fighting the force took Irun, closing the French border to the Republicans. On 13 September, the Basques surrendered Madrid to the Nationalists, who then advanced toward their capital, Bilbao. The Republican militias on the border of Viscaya halted these forces at the end of September.\\n\"^^xsd:string ;\n" +
@@ -78,19 +78,35 @@ public class TestConstants {
 					"";
 	
 	public static String expectedResponseTopic = 
+			"@prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> .\n" +
 			"@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n" +
-					"@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n" +
-					"@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .\n" +
-					"@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .\n" +
-					"@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .\n" +
-					"\n" +
-					"<http://dkt.dfki.de/documents/#char=0,74>\n" +
-					"        a                        nif:RFC5147String , nif:String , nif:Context ;\n" +
-					"        nif:beginIndex           \"0\"^^xsd:nonNegativeInteger ;\n" +
-					"        nif:endIndex             \"74\"^^xsd:nonNegativeInteger ;\n" +
-					"        nif:isString             \"Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin\"^^xsd:string ;\n" +
-			        "        nif:topicModellingLabel  \"ukraine (17) donezk (17) studenten (10) ukrainer (9) schwer (5) \"^^xsd:string .\n" +
-					"";
+			"@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n" +
+			"@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .\n" +
+			"@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .\n" +
+			"@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .\n" +
+			"\n" +
+			"<http://dkt.dfki.de/documents/#char=0,74>\n" +
+			"        a                        nif:RFC5147String , nif:String , nif:Context ;\n" +
+			"        nif:beginIndex           \"0\"^^xsd:nonNegativeInteger ;\n" +
+			"        nif:endIndex             \"74\"^^xsd:nonNegativeInteger ;\n" +
+			"        nif:isString             \"Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin\"^^xsd:string ;\n" +
+	        "        nif:topicModellingLabel  \"cb (63) 072915 (62) na (50) flüchtlinge (41) 30 (41) \"^^xsd:string .\n" +
+			"";
+	
+	public static String expectedStartingResponseTopic = 
+			"@prefix dktnif: <http://dkt.dfki.de/ontologies/nif#> .\n" +
+			"@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n" +
+			"@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n" +
+			"@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .\n" +
+			"@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .\n" +
+			"@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .\n" +
+			"\n" +
+			"<http://dkt.dfki.de/documents/#char=0,74>\n" +
+			"        a                        nif:RFC5147String , nif:String , nif:Context ;\n" +
+			"        nif:beginIndex           \"0\"^^xsd:nonNegativeInteger ;\n" +
+			"        nif:endIndex             \"74\"^^xsd:nonNegativeInteger ;\n" +
+			"        nif:isString             \"Einige interessanten Texte die etwas witchtiges drinnen haben über Medizin\"^^xsd:string ;\n" +
+	        "        nif:topicModellingLabel  \"";
 
 	public static String expectedResponseTopic2 = 
 			"@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n" +
@@ -107,7 +123,7 @@ public class TestConstants {
 					"        nif:geoStandardDevs      \"1.4446184970002673_2.202362615152696\"^^xsd:string ;\n" +
 					"        nif:isString             \"1936\\n\\nCoup leader Sanjurjo was killed in a plane crash on 20 July, leaving an effective command split between Mola in the North and Franco in the South. On 21 July, the fifth day of the rebellion, the Nationalists captured the main Spanish naval base at Ferrol in northwestern Spain. A rebel force under Colonel Beorlegui Canet, sent by General Emilio Mola, undertook the Campaign of Guipuzcoa from July to September. The capture of Guipuzcoa isolated the Republican provinces in the north. On 5 September, after heavy fighting the force took Irun, closing the French border to the Republicans. On 13 September, the Basques surrendered Madrid to the Nationalists, who then advanced toward their capital, Bilbao. The Republican militias on the border of Viscaya halted these forces at the end of September.\\n\"^^xsd:string ;\n" +
 					"        nif:meanDateRange        \"19360531090000_19361022090000\"^^xsd:string ;\n" +
-			        "        nif:topicModellingLabel  \"alexander (10) bremen (10) alevtina (8) donbass (7) yana (7) \"^^xsd:string .\n" +
+			        "        nif:topicModellingLabel  \"br (55443) span (9608) und (9024) die (7442) der (7143) \"^^xsd:string .\n" +
 					"";
 
 	 
