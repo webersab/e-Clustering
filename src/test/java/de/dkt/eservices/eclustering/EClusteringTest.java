@@ -139,7 +139,7 @@ public class EClusteringTest {
 				.asString();
 		Assert.assertEquals(response.getStatus(), 200);
 		assertTrue(response.getBody().length() > 0);
-		Assert.assertTrue(response.getBody().startsWith(TestConstants.expectedResponseTopic));
+		Assert.assertTrue(response.getBody().startsWith(TestConstants.expectedStartingResponseTopic));
 	}
 
 	@Test
@@ -148,13 +148,13 @@ public class EClusteringTest {
 				.queryString("informat", "turtle")
 				.queryString("input", TestConstants.inputText)
 				.queryString("outformat", "turtle")
-				.queryString("modelName", "3pc")
+				.queryString("modelName", "condat")
 //				.queryString("modelPath", "recursos/")
 				.queryString("language", "de")
 				.asString();
 		Assert.assertEquals(response.getStatus(), 200);
 		assertTrue(response.getBody().length() > 0);
-		Assert.assertEquals(TestConstants.expectedResponseTopic2, response.getBody());
+		Assert.assertTrue(response.getBody().startsWith(TestConstants.expectedStartingResponseTopic2));
 	}
 //////
 //	@Test
